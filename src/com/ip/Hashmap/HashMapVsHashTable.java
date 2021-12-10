@@ -2,7 +2,10 @@ package com.ip.Hashmap;
 
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
+
 
 public class HashMapVsHashTable {
 
@@ -13,8 +16,8 @@ public class HashMapVsHashTable {
 		//HT does not allow duplicate keys -- if you try to insert duplicate keys, it will override with new value and return old value
 		//HT allows Duplicate values
 		Hashtable<Integer, String> ht = new Hashtable<Integer, String>();
-		//ht.put(null,"value");
-		//ht.put(90, null);
+//		ht.put(null,"value");
+//		ht.put(90, null);
 		ht.put(101, "One");
 		ht.put(101, "Two");
 		ht.put(103, "Three");
@@ -38,6 +41,15 @@ public class HashMapVsHashTable {
 		hm.put(104, "Four");
 		hm.put(105, "Four");
 		System.out.println("HashMap values: ");
+		//IQUES-> since KeySet contain null value so iterator will work or not?
+		Set s = hm.keySet();
+		Iterator itr = s.iterator();
+		System.out.println("Key Set:"+s);
+		
+		while(itr.hasNext()) {
+			System.out.println("key: "+itr.next());
+		}
+		
 		for(Map.Entry m : hm.entrySet()) {
 			System.out.println(m.getKey()+" -- "+m.getValue());
 		}

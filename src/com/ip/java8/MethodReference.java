@@ -9,6 +9,7 @@ interface Measure{
 public class MethodReference {
 
 	public static void main(String[] args) {
+		
 		Measure m = String::length;
 		System.out.println(m.length("abc"));
 	}

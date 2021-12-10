@@ -25,9 +25,11 @@ public class ProducerConsumerBlockingQueue {
 			while(true) {
 				int element = random.nextInt(MAX_SIZE);
 				try {
+					System.out.println("Produced = "+element);
 					queue.put(element);
+					Thread.sleep(50);
 				}catch(InterruptedException e) {
-					
+					e.printStackTrace();
 				}
 			}
 		}
@@ -39,6 +41,7 @@ public class ProducerConsumerBlockingQueue {
 			while(true) {
 				try {
 					System.out.println("Consumed = "+queue.take());
+					Thread.sleep(5000);
 				}catch(InterruptedException e) {
 					e.printStackTrace();
 				}

@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class interviewQuestion_1 {
 
 	public static void main(String[] args) {
-		String s = "name=Megha&company=Azuga Telematics Pvt Ltd.&phone=9566&city=Blr";
+		String s = "name=Chandrabhushan&company=Oracle&phone=9566&city=Blr";
 
 		List<String> str = Arrays.asList(s.split("&"));
 		System.out.println(str);

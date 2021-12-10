@@ -3,8 +3,8 @@ package com.ip.MultiThreading;
 
 class RunnableDemo implements Runnable {
 	
-	private Thread t;
 	private String threadName;
+	private Thread t;
 	
 	RunnableDemo(String name){
 		threadName=name;
@@ -26,23 +26,25 @@ class RunnableDemo implements Runnable {
 		System.out.println("Thread "+ threadName+" exiting");
 	}
 	
-	public void start() {
-		System.out.println("Starting "+ threadName);
-		if(t == null) {
-			t = new Thread(this,threadName);
-			t.start();
-		}
-	}
+//	public void start() {
+//		System.out.println("Starting "+ threadName);
+//		if(t == null) {
+//			t = new Thread(this,threadName);
+//			t.start();
+//		}
+//	}
 	
 }
 public class Code1_Implementing_Runnable_Interface {
 
 	public static void main(String[] args) {
 		RunnableDemo R1 = new RunnableDemo("Thread-1");
-		R1.start();
+		Thread t1 = new Thread(R1);
+		t1.start();
 		
 		RunnableDemo R2 = new RunnableDemo("Thread-2");
-		R2.start();
+		Thread t2 = new Thread(R2);
+		t2.start();
 	}
 	
 	

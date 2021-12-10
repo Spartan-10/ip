@@ -7,8 +7,10 @@ public class InterThreadComm {
 		b.start();
 		synchronized (b) {
 			try {
-				System.out.println("Waiting for b to complete..");
+				System.out.println(Thread.currentThread().getName()+" Calling wait method");
 				b.wait();
+				System.out.println(Thread.currentThread().getName()+" got notification call ");
+				System.out.println("Total = "+b.total);
 			} catch (Exception e) {
 				System.out.println("Total = "+b.total);
 			}
@@ -18,15 +20,17 @@ public class InterThreadComm {
 }
 
 class ThreadB extends Thread {
-	int total;
+	int total=0;
 	
 	@Override
 	public void run() {
 		synchronized (this) {
-			for(int i=0;i<100;i++) {
+			System.out.println(Thread.currentThread().getName()+" Starts Calculation ");
+			for(int i=0;i<=100;i++) {
 				total+=i;
 			}
-			notify();
+			System.out.println(Thread.currentThread().getName()+" is Giving notification call ");
+			this.notify();
 		}
 	}
 }

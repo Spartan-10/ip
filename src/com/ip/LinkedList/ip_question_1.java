@@ -14,7 +14,7 @@ public class ip_question_1 {
 		list1.add("b");
 		System.out.println(list1);
 		
-//		list = new ArrayList<String>();  //--> since List if final...so you can't reinitialize it
+//		list1 = new ArrayList<String>();  //--> since List is final...so you can't reinitialize it
 		
 		
 		final List<String> list2 = Arrays.asList("A","B"); // here Initializing and Assigning ArrayList Simultaneously
