@@ -1,0 +1,194 @@
+What is Lambda Expression ?
+1. Lambda Expression is a function that can be referenced and passed around as an object.
+2. Lambda Expression introduce functional style processing in java and facilitate the writing of compact and easy-to-read code.
+3. One of the main uses is to define inline implementations of functional interfaces.
+
+Why use Lambda Expression ?
+1. To Provide the implementation of Functional Interface.
+2. Less Coding - lambda Expression are a natural replacement for anonymous classes as a method argument
+3. Lambda Expression enables you to encapsulate a single unit of behavior and pass it to other code.
+	you can use lambda expression if you want a certain action performed on each element of a collection.
+	
+Lambda Expression Syntax ?
+(argument-list) -> {body}
+argument-list: it can be empty or non-empty as well
+
+What is Functional Interface ?
+1. An Interface that contains exactly one abstract method is known as a functional interface.
+2. It can have any number of default, static methods but can contain only one abstract method.
+3. It can also declare methods of object class. If we override java.Lang.Object class's method as an abstract method,
+	which does not count as an abstract method by Functional Interface.
+4. Functional Interface is also known as Single Abstract Method Interfaces or SAM Interfaces.
+5. A Functional Interface can extend another interface only when it does not have any abstract method.
+
+What is Method Reference ?
+1. Method Reference is used to refer methods of a class.
+2. Each time when you are using a lambda expression to just referring a method, 
+	you can replace your lambda expression with method reference 
+
+Ex: (o)->o.toString(); can become Object::toString();
+
+A Method Reference can be identified by :: separating a class or object name and the name of the method.
+
+What are the different kind of Method References ?
+There are four kinds of Method References:
+1. Method Reference to a static method
+   ContainingClass :: StaticMethodName (Ex: String :: valueOf;)
+2. Method Reference to an instance method of a particular object
+	containingObject :: instanceMethodName (Ex: str :: toString)
+3. Method Reference to an instance method of an arbitrary object of a particular type
+	ContainingType :: methodName (Ex: String :: toString)
+4. Method Reference to a Constructor
+	ClassName :: New (Ex: String::New;)
+	
+Explain the expression System.out::println ?
+Expression illustrates=  passing a reference to a static method(println()) of a class (System.out) 
+
+
+What is Stream ?
+1. An Stream is a sequence of Elements on which various operations can be performed.
+2. Operations on Streams can be either intermediate or terminal.
+3. Final operations return a results of a certain type and intermediate operations return the same stream.
+	Thus you can build chains of several operations on the same stream.
+4. A Stream can have any number of calls to intermediate operations and the last call to the final operation.
+	At the same time all the intermediate operations are performed lazily and until the final operation is called
+	no actions actually happens 
+	(Similar to create Thread or Runnable object, without a call to start() method. not work until we call start() method)
+5. Streams are created based on some sources. For Ex: classes from java.util.Collection 
+6. Streams are not supported by Associative arrays(maps) Ex: HashMap
+7. Streams cannot be reused, As soon as final operation has been called the flow is closed.
+8. In addition to the universal object, there are special types of streams to work with primitive data types(int,long and double)
+	IntStream, LongStream, DoubleStream. These primitive streams work just like regular object stream, but with the following difference:
+	a. use specialized lambda expressions for ex: IntFunction or IntPredicate instead of Function and Predicate
+	b. support addition end operations sum(), average(), mapToObj().
+
+
+What is the difference between Collection and Stream ?
+1. Collections allow you to work with elements separately, while streams do not allow this, 
+	but instead provides the ability to perform functions on data as one.
+2. Collections API is used to Store Data, while Stream API is used to compute Data.
+3. Collection Object is Constructed Eagerly while Stream Object is Constructed Lazily
+
+
+
+What are Collectors Class in Java8 ?
+1. Collectors is a final Class that extends Object class. It provide reduction operations, 
+	such as accumulating elements into collections, summarizing elements according to various criteria etc.
+
+
+What is Default interface method ?
+1. Java8 allows you to add non-abstract method implementations to an interface using the keyword default:
+	Usually when a new abstract method is added to an interface, all implementing classes will break until they implement
+	the new abstract method. In Java8,this problem has been solved by the use of default method.
+	For Example: Collection interface does not have stream method declaration previously. 
+	Thus, adding such method would simply break the whole Collection API.
+	Java8 introduces default method so that Collection interface can have a default implementation of stream method
+	without requiring the classes implementing this interface to implement the same.
+	
+	interface  Example {
+    int  process ( int  a );
+    default void  show () {
+        System.out.println("default show ()");
+    	}
+	}
+2. If a class implements an interface, it can, but does not have to, implement the default methods which is already 
+	implemented in the interface. The class inherits the default implementation.
+3. If a class implements several interfaces that have the same default method, then the class must implement the method 
+	with the same signature on its own. The situation is similar if one interface has a default method, 
+	and in the other the same method is abstract - no class default implementation is inherited.
+4. Object class method cannot be overridden as Default.
+5. They help implement interfaces without fear of disrupting other classes
+6. They give classes the freedom to choose the method to be redefined
+
+How to call default interface method in a class that implements this interface?
+Using the keyword super along with the interface name:
+
+interface  Paper {
+    default void  show () {
+        System.out.println(" default show ()");
+    }
+}
+
+class  License  implements  Paper {
+     public  void  show () {
+        Paper.super.show();
+    }
+}
+
+Q. What is static interface method ?
+1. Static interface methods are similar to default methods, except that there is no way 
+	to override them in classes that implement the interface.
+2. The idea behind static interface methods is to provide a simple mechanism that allows us to increase the 
+	degree of cohesion of a design by putting together related methods in one single place without having to create an object.
+3. Static methods in interfaces make possible to group related utility methods, 
+	without having to create artificial utility classes that are simply placeholder for static methods.
+4. Object Class methods cannot be overridden as static.
+
+Q. How to call static interface method ?
+Using the interface name:
+interface  Paper {
+     static  void  show () {
+         System.out.println( " static show () " );
+    }
+}
+
+class  License {
+     public  void  showPaper () {
+         Paper.show ();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
